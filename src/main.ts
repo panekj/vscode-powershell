@@ -5,7 +5,7 @@
 
 import path = require("path");
 import vscode = require("vscode");
-import TelemetryReporter from "vscode-extension-telemetry";
+// import TelemetryReporter from "vscode-extension-telemetry";
 import { DocumentSelector } from "vscode-languageclient";
 import { CodeActionsFeature } from "./features/CodeActions";
 import { ConsoleFeature } from "./features/Console";
@@ -39,13 +39,13 @@ import { LanguageClientConsumer } from "./languageClientConsumer";
 const PackageJSON: any = require("../package.json");
 
 // the application insights key (also known as instrumentation key) used for telemetry.
-const AI_KEY: string = "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217";
+// const AI_KEY: string = "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217";
 
 let logger: Logger;
 let sessionManager: SessionManager;
 let languageClientConsumers: LanguageClientConsumer[] = [];
 let commandRegistrations: vscode.Disposable[] = [];
-let telemetryReporter: TelemetryReporter;
+// let telemetryReporter: TelemetryReporter;
 
 const documentSelector: DocumentSelector = [
     { language: "powershell", scheme: "file" },
@@ -54,7 +54,7 @@ const documentSelector: DocumentSelector = [
 
 export function activate(context: vscode.ExtensionContext): IPowerShellExtensionClient {
     // create telemetry reporter on extension activation
-    telemetryReporter = new TelemetryReporter(PackageJSON.name, PackageJSON.version, AI_KEY);
+    // telemetryReporter = new TelemetryReporter(PackageJSON.name, PackageJSON.version, AI_KEY);
 
     // If both extensions are enabled, this will cause unexpected behavior since both register the same commands
     if (PackageJSON.name.toLowerCase() === "powershell-preview"
@@ -130,8 +130,8 @@ export function activate(context: vscode.ExtensionContext): IPowerShellExtension
             logger,
             documentSelector,
             PackageJSON.displayName,
-            PackageJSON.version,
-            telemetryReporter);
+            PackageJSON.version);
+            // telemetryReporter);
 
     // Register commands that do not require Language client
     commandRegistrations = [
@@ -224,5 +224,5 @@ export function deactivate(): void {
     logger.dispose();
 
     // Dispose of telemetry reporter
-    telemetryReporter.dispose();
+    // telemetryReporter.dispose();
 }
