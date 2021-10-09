@@ -4,6 +4,20 @@
 
 ---
 
+### PowerShell
+
+![Open VSX Version](https://img.shields.io/open-vsx/v/panekj/powershell)
+![Open VSX Release Date](https://img.shields.io/open-vsx/release-date/panekj/powershell)
+![Open VSX Downloads (version)](https://img.shields.io/open-vsx/dt/panekj/powershell/latest)
+
+### PowerShell Preview
+
+![Open VSX Version](https://img.shields.io/open-vsx/v/panekj/powershell-preview)
+![Open VSX Release Date](https://img.shields.io/open-vsx/release-date/panekj/powershell-preview)
+![Open VSX Downloads (version)](https://img.shields.io/open-vsx/dt/panekj/powershell-preview/latest)
+
+---
+
 [![Build Status](https://dev.azure.com/powershell/vscode-powershell/_apis/build/status/PowerShell.vscode-powershell?branchName=master)](https://dev.azure.com/powershell/vscode-powershell/_build/latest?definitionId=51&branchName=master)
 [![Version](https://vsmarketplacebadge.apphb.com/version/ms-vscode.PowerShell.svg)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/ms-vscode.PowerShell.svg)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
