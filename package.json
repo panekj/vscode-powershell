@@ -3,13 +3,13 @@
   "displayName": "PowerShell",
   "version": "2021.10.0",
   "preview": false,
-  "publisher": "ms-vscode",
+  "publisher": "panekj",
   "description": "Develop PowerShell modules, commands and scripts in Visual Studio Code!",
   "engines": {
     "vscode": "^1.56.0"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
-  "homepage": "https://github.com/PowerShell/vscode-powershell/blob/master/README.md",
+  "homepage": "https://github.com/PowerShell/panekj/blob/master/README.md",
   "categories": [
     "Debuggers",
     "Programming Languages",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PowerShell/vscode-powershell.git"
+    "url": "https://github.com/panekj/vscode-powershell.git"
   },
   "activationEvents": [
     "onDebugInitialConfigurations",
@@ -631,7 +631,7 @@
         },
         "powershell.bugReporting.project": {
           "type": "string",
-          "default": "https://github.com/PowerShell/vscode-powershell",
+          "default": "https://github.com/panekj/vscode-powershell",
           "description": "Specifies the url of the GitHub project in which to generate bug reports."
         },
         "powershell.helpCompletion": {
