@@ -58,7 +58,7 @@ export function activate(context: vscode.ExtensionContext): IPowerShellExtension
 
     // If both extensions are enabled, this will cause unexpected behavior since both register the same commands
     if (PackageJSON.name.toLowerCase() === "powershell-preview"
-        && vscode.extensions.getExtension("ms-vscode.powershell")) {
+        && (vscode.extensions.getExtension("ms-vscode.powershell") || vscode.extensions.getExtension("ms-vscode.powershell-preview") || vscode.extensions.getExtension("panekj.powershell"))) {
         vscode.window.showWarningMessage(
             "'PowerShell' and 'PowerShell Preview' are both enabled. Please disable one for best performance.");
     }
