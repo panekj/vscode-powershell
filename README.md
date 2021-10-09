@@ -1,5 +1,9 @@
 # PowerShell Language Support for Visual Studio Code
 
+## This is a community maintained extension built from upstream, [see this issue for more information](https://github.com/PowerShell/vscode-powershell/issues/3474)
+
+---
+
 [![Build Status](https://dev.azure.com/powershell/vscode-powershell/_apis/build/status/PowerShell.vscode-powershell?branchName=master)](https://dev.azure.com/powershell/vscode-powershell/_build/latest?definitionId=51&branchName=master)
 [![Version](https://vsmarketplacebadge.apphb.com/version/ms-vscode.PowerShell.svg)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/ms-vscode.PowerShell.svg)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
