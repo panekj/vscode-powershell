@@ -5,7 +5,6 @@
 
 import path = require("path");
 import vscode = require("vscode");
-import TelemetryReporter from "vscode-extension-telemetry";
 import { DocumentSelector } from "vscode-languageclient";
 import { CodeActionsFeature } from "./features/CodeActions";
 import { ConsoleFeature } from "./features/Console";
@@ -38,14 +37,10 @@ import { LanguageClientConsumer } from "./languageClientConsumer";
 // tslint:disable-next-line: no-var-requires
 const PackageJSON: any = require("../package.json");
 
-// the application insights key (also known as instrumentation key) used for telemetry.
-const AI_KEY: string = "AIF-d9b70cd4-b9f9-4d70-929b-a071c400b217";
-
 let logger: Logger;
 let sessionManager: SessionManager;
 let languageClientConsumers: LanguageClientConsumer[] = [];
 let commandRegistrations: vscode.Disposable[] = [];
-let telemetryReporter: TelemetryReporter;
 
 const documentSelector: DocumentSelector = [
     { language: "powershell", scheme: "file" },
@@ -53,9 +48,6 @@ const documentSelector: DocumentSelector = [
 ];
 
 export function activate(context: vscode.ExtensionContext): IPowerShellExtensionClient {
-    // create telemetry reporter on extension activation
-    telemetryReporter = new TelemetryReporter(PackageJSON.name, PackageJSON.version, AI_KEY);
-
     // If both extensions are enabled, this will cause unexpected behavior since both register the same commands
     if (PackageJSON.name.toLowerCase() === "powershell-preview"
         && (vscode.extensions.getExtension("ms-vscode.powershell") || vscode.extensions.getExtension("ms-vscode.powershell-preview") || vscode.extensions.getExtension("panekj.powershell"))) {
@@ -130,8 +122,7 @@ export function activate(context: vscode.ExtensionContext): IPowerShellExtension
             logger,
             documentSelector,
             PackageJSON.displayName,
-            PackageJSON.version,
-            telemetryReporter);
+            PackageJSON.version);
 
     // Register commands that do not require Language client
     commandRegistrations = [
@@ -222,7 +213,4 @@ export function deactivate(): void {
 
     // Dispose of the logger
     logger.dispose();
-
-    // Dispose of telemetry reporter
-    telemetryReporter.dispose();
 }

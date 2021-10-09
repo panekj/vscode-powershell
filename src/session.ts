@@ -6,7 +6,6 @@ import net = require("net");
 import path = require("path");
 import * as semver from "semver";
 import vscode = require("vscode");
-import TelemetryReporter from "vscode-extension-telemetry";
 import { Message } from "vscode-jsonrpc";
 import { Logger } from "./logging";
 import { PowerShellProcess } from "./process";
@@ -69,8 +68,7 @@ export class SessionManager implements Middleware {
         private log: Logger,
         private documentSelector: DocumentSelector,
         hostName: string,
-        version: string,
-        private telemetryReporter: TelemetryReporter) {
+        version: string) {
 
         this.platformDetails = getPlatformDetails();
 
@@ -552,14 +550,6 @@ export class SessionManager implements Middleware {
             // This enables handling Semantic Highlighting messages in PowerShell Editor Services
             this.languageServerClient.registerProposedFeatures();
 
-            if (!this.InDevelopmentMode) {
-                this.languageServerClient.onTelemetry((event) => {
-                    const eventName: string = event.eventName ? event.eventName : "PSESEvent";
-                    const data: any = event.data ? event.data : event
-                    this.telemetryReporter.sendTelemetryEvent(eventName, data);
-                });
-            }
-
             this.languageServerClient.onReady().then(
                 () => {
                     this.languageServerClient
@@ -568,11 +558,6 @@ export class SessionManager implements Middleware {
                             async (versionDetails) => {
                                 this.versionDetails = versionDetails;
                                 this.started = true;
-
-                                if (!this.InDevelopmentMode) {
-                                    this.telemetryReporter.sendTelemetryEvent("powershellVersionCheck",
-                                        { powershellVersion: versionDetails.version });
-                                }
 
                                 this.setSessionStatus(
                                     this.versionDetails.architecture === "x86"
