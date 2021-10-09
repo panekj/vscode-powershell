@@ -67,7 +67,7 @@ export class ExternalApiFeature extends LanguageClientConsumer implements IPower
         }
 
         // If we're in development mode, we allow these to be used for testing purposes.
-        if (!this.sessionManager.InDevelopmentMode && (id === "ms-vscode.PowerShell" || id === "ms-vscode.PowerShell-Preview")) {
+        if (!this.sessionManager.InDevelopmentMode && (id === "ms-vscode.PowerShell" || id === "ms-vscode.PowerShell-Preview" || id === "panekj.PowerShell" || id === "panekj.PowerShell-Preview")) {
             throw new Error("You can't use the PowerShell extension's id in this registration.");
         }
 
